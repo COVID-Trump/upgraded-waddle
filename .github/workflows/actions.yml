@@ -28,12 +28,14 @@ jobs:
           repository: ${{ secrets.XD_REPO_CODE }}  
           path: out/src  
           token: ${{ secrets.XD_GITHUB_TOKEN }}
+          fetch-depth: 0   # Include tags
       - name: Checkout Resources  
         uses: actions/checkout@v3  
         with:  
           repository: ${{ secrets.XD_REPO_RES }}  
           path: out/resources  
           token: ${{ secrets.XD_GITHUB_TOKEN }}
+          fetch-depth: 0
       - name: Fetch MC Versions  
         run: |  
           cd "$GITHUB_WORKSPACE/out/src"
