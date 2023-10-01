@@ -82,6 +82,7 @@ xdecompiler_run () {
   timeout $(echo "( ${XDECOMPILER_INITIAL_DATE} + ${XDECOMPILER_TIMEOUT_FORCE} - $(date +%s%3N) ) * 0.001" | bc) \
    bash -c '#xdecompiler_run0
       set -e
+      echo "Running for $1" >> "$4"
       # 1. Run main program, then add version stamp
       cd "$3"
       $2 --output-code "$3/out-tmp/src" \
@@ -101,8 +102,9 @@ xdecompiler_run () {
       git tag "$1"
       cd "$3"
 
+      echo "Successfully finished running for $1" >> "$4"
       set +e
-   ' "xdecompiler_run0" "$1" "${XDECOMPILER_RUN_RAW}" "${XDECOMPILER_PWD}"
+   ' "xdecompiler_run0" "$1" "${XDECOMPILER_RUN_RAW}" "${XDECOMPILER_PWD}" "$GITHUB_STEP_SUMMARY"
   #bash -c "echo '#1 breakpoint returns' $? ; exit $?"
   if [ "$?" == 124 ] ; then
     XDECOMPILER_TERMINATES=true

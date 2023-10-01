@@ -21,5 +21,6 @@
 cd "${XDECOMPILER_PWD}"
 XDECOMPILER_TERMINATES=false
 #bash -c "echo '#5 breakpoint returns' $? ; exit $?"
+echo "Done!" >> "$GITHUB_STEP_SUMMARY"
 
 # Then perform push by actions
