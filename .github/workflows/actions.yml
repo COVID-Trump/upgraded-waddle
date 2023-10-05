@@ -78,9 +78,10 @@ jobs:
           repository: ${{ secrets.XD_REPO_RES }}
       - name: Archive decompile logs
         run: |
-          tar -cvzf xd_decompile_stage_logs.tgz logs/
+          tar -cvzf xd_decompile_stage_logs.tgz logs/ && echo 'archive_log_success=true' >> $GITHUB_ENV
       - name: Upload decompile logs
         uses: actions/upload-artifact@v3
+        if: env.archive_log_success == 'true'
         with:
           name: decompile-stage-logs
           path: xd_decompile_stage_logs.tgz
