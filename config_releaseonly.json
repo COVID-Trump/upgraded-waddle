@@ -1,9 +1,9 @@
 {
   "release_only": true,
   "mappings": ["mojmaps"],
-	"main": {
-		"from": "1.16.5"
-	},
-	"branches": {
-	}
+  "main": {
+	  	"from": "1.16.1"
+  },
+	 "branches": {
+ 	}
 }
