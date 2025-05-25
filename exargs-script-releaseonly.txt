@@ -1,3 +1,0 @@
---timeout-force 5h30m
---timeout-soft 5h
---config ./config_releaseonly.json
