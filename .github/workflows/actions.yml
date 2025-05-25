@@ -36,6 +36,9 @@ jobs:
           path: out/resources
           token: ${{ secrets.XD_GITHUB_TOKEN }}
           fetch-depth: 0
+      - name: Download XDecompiler
+        run: |
+          wget -O "$GITHUB_WORKSPACE/XDecompiler-fat.jar" $(cat xdecompiler_link.txt)
       - name: Fetch MC Versions  
         run: |  
           cd "$GITHUB_WORKSPACE/out/src"
